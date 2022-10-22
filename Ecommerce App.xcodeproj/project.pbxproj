@@ -16,6 +16,8 @@
 		0B8B40082903034800ABBD46 /* Raleway-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B8B40052903034800ABBD46 /* Raleway-SemiBold.ttf */; };
 		0B8B400C2903054900ABBD46 /* OnBoardingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8B400B2903054900ABBD46 /* OnBoardingPage.swift */; };
 		0B8B400E290306B500ABBD46 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8B400D290306B500ABBD46 /* Extension.swift */; };
+		0B8B401129030F1700ABBD46 /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8B401029030F1700ABBD46 /* LoginPage.swift */; };
+		0B8B401629030FD400ABBD46 /* LoginPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8B401529030FD400ABBD46 /* LoginPageModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		0B8B40092903038B00ABBD46 /* Ecommerce-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Ecommerce-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0B8B400B2903054900ABBD46 /* OnBoardingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingPage.swift; sourceTree = "<group>"; };
 		0B8B400D290306B500ABBD46 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		0B8B401029030F1700ABBD46 /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
+		0B8B401529030FD400ABBD46 /* LoginPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,11 +66,12 @@
 		0B8B3FF32903030100ABBD46 /* Ecommerce App */ = {
 			isa = PBXGroup;
 			children = (
-				0B8B400D290306B500ABBD46 /* Extension.swift */,
-				0B8B40092903038B00ABBD46 /* Ecommerce-App-Info.plist */,
+				0B8B401229030F6500ABBD46 /* ViewModel */,
 				0B8B400A290304BC00ABBD46 /* View */,
 				0B8B40022903032400ABBD46 /* Fonts */,
 				0B8B3FF42903030100ABBD46 /* Ecommerce_AppApp.swift */,
+				0B8B400D290306B500ABBD46 /* Extension.swift */,
+				0B8B40092903038B00ABBD46 /* Ecommerce-App-Info.plist */,
 				0B8B3FF62903030100ABBD46 /* ContentView.swift */,
 				0B8B3FF82903030300ABBD46 /* Assets.xcassets */,
 				0B8B3FFA2903030300ABBD46 /* Preview Content */,
@@ -96,8 +101,17 @@
 			isa = PBXGroup;
 			children = (
 				0B8B400B2903054900ABBD46 /* OnBoardingPage.swift */,
+				0B8B401029030F1700ABBD46 /* LoginPage.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		0B8B401229030F6500ABBD46 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0B8B401529030FD400ABBD46 /* LoginPageModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,7 +189,9 @@
 			files = (
 				0B8B3FF72903030100ABBD46 /* ContentView.swift in Sources */,
 				0B8B400C2903054900ABBD46 /* OnBoardingPage.swift in Sources */,
+				0B8B401629030FD400ABBD46 /* LoginPageModel.swift in Sources */,
 				0B8B3FF52903030100ABBD46 /* Ecommerce_AppApp.swift in Sources */,
+				0B8B401129030F1700ABBD46 /* LoginPage.swift in Sources */,
 				0B8B400E290306B500ABBD46 /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
