@@ -4,8 +4,7 @@
 //
 //  Created by Dalveer singh on 21/10/22.
 //
-
-import Foundation
+import SwiftUI
 class LoginPageModel:ObservableObject{
     @Published var email:String = ""
     @Published var password:String = ""
@@ -13,11 +12,16 @@ class LoginPageModel:ObservableObject{
     @Published var showPassword:Bool = false
     @Published var re_enter_password:String = ""
     @Published var showEnterPassword:Bool = false
+    @AppStorage("log_status") var log_status : Bool = false
     func Login(){
-        
+        withAnimation {
+            log_status = true
+        }
     }
     func Register(){
-        
+        withAnimation {
+            log_status = true
+        }
     }
     func ForgetPassword(){
         
