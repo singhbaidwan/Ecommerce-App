@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct MainPage: View {
+    
     @State var currentTab:Tab = .home
+    @StateObject var sharedData:SharedDataModel = SharedDataModel()
+    @Namespace var animation
+    
     init(){
         UITabBar.appearance().isHidden = true
     }
     var body: some View {
+        
         VStack(spacing: 0) {
             
             TabView(selection: $currentTab) {
-                Home()
+                Home(animation: animation)
+                    .environmentObject(sharedData)
                     .tag(Tab.home)
                 Text("Liked")
                     .tag(Tab.liked)
@@ -36,13 +42,13 @@ struct MainPage: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 22,height: 22)
                             .background(
-                            Color("Purple")
-                                .opacity(0.1)
-                                .cornerRadius(5)
-                                .blur(radius: 5)
-                                .padding(-7)
-                                .opacity(currentTab == tab ? 1 : 0)
-                            
+                                Color("Purple")
+                                    .opacity(0.1)
+                                    .cornerRadius(5)
+                                    .blur(radius: 5)
+                                    .padding(-7)
+                                    .opacity(currentTab == tab ? 1 : 0)
+                                
                             )
                             .frame(maxWidth: .infinity)
                             .foregroundColor(currentTab == tab ? Color("Purple") : Color.black.opacity(0.3))
@@ -54,6 +60,21 @@ struct MainPage: View {
             
             
         }
+        .background(Color("BG").ignoresSafeArea())
+        .overlay(
+        
+            ZStack {
+                if let product = sharedData.detailProduct,sharedData.showDetailProduct{
+                    
+                    ProductDetailView(product: product, animation: animation)
+                        .environmentObject(sharedData)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .opacity))
+                    
+                }
+                
+            }
+        )
+        
     }
 }
 

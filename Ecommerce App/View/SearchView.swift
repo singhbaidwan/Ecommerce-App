@@ -10,6 +10,8 @@ import SwiftUI
 struct SearchView: View {
     var animation:Namespace.ID
     @EnvironmentObject var homeData:HomeViewModel
+    @EnvironmentObject var sharedData:SharedDataModel
+    
     @FocusState var startTF:Bool
     
     var body: some View {
@@ -23,7 +25,7 @@ struct SearchView: View {
                         homeData.searchActivated = false
                     }
                     homeData.searchText = ""
-                    
+                    sharedData.fromSearchPage = false
                 } label: {
                     Image(systemName: "arrow.left")
                         .font(.title2)
@@ -125,9 +127,29 @@ struct SearchView: View {
     @ViewBuilder
     func ProductCardView(product:Product)->some View{
         VStack(spacing: 10) {
-            Image(product.productImage)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
+            ZStack{
+                
+                if sharedData.showDetailProduct {
+                    
+                        Image(product.productImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .opacity(0)
+                }
+                else
+                {
+                    
+                        Image(product.productImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .matchedGeometryEffect(id: "\(product.id)SEARCH", in: animation)
+                }
+                
+            }
+                .offset(y:-50)
+                .padding(.bottom,-50)
+            
+            
             Text(product.title)
                 .font(.custom(customFont, size: 18))
                 .fontWeight(.semibold)
@@ -151,7 +173,14 @@ struct SearchView: View {
                 .cornerRadius(25)
         )
         .padding(.top,50)
-        
+        .onTapGesture {
+            withAnimation(.easeInOut)
+            {
+                sharedData.showDetailProduct = true
+                sharedData.fromSearchPage = true
+                sharedData.detailProduct = product
+            }
+        }
         
     }
     
@@ -160,6 +189,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        MainPage()
     }
 }
